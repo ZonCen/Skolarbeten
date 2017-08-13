@@ -16,6 +16,7 @@ namespace Övning2_Ryggsäcken
             int nr = 0; //Måste lägga min int nr här uppe för att inte låsa in den under try metoden!
             string[] backPack = new string[5] {"", "", "", "" ,"" }; // Skapa en vector/array istället för en vanligt sträng.
             int lastIndex = 0;
+            int lastIndexPro = 0;
             bool isActive = true; // Används för att enklare kunna hantera min loop.
             while (isActive) { //loop som gör det möjligt att användaren kan välja olika val baserat på vad dem vill göra samt återkomma till menyn när de är klara med sitt val.
                 Console.WriteLine("[1] Lägg till ett föremål!");
@@ -77,7 +78,8 @@ namespace Övning2_Ryggsäcken
 
                            }*/
 
-                        Case1(backPack, LastIndex(0));
+                        Case1(backPack, LastIndexPro);
+                        lastIndexPro++;
 
                         
                         continue;
