@@ -12,12 +12,12 @@ namespace Övning2_Ryggsäcken
         static void Main(string[] args)
         {
             Welcome(); // Hämtar metoden Welcome.
-            // string objects = ""; //Lägger denna strängen här uppe för att den ska vara tillgänglig ifrån våran loop nedan. I den 
+            // string objects = ""; //Lägger denna strängen här uppe för att den ska vara tillgänglig ifrån våran loop nedan. (OBS GAMMAL KOD)
             int nr = 0; //Måste lägga min int nr här uppe för att inte låsa in den under try metoden!
             string[] backPack = new string[5] {"", "", "", "" ,"" }; // Skapa en vector/array istället för en vanligt sträng.
             int lastIndex = 0;
             bool isActive = true; // Används för att enklare kunna hantera min loop.
-            while (isActive) { //loop som gör det möjligt att användaren kan välja olika val baserat på vad dem vill göra.
+            while (isActive) { //loop som gör det möjligt att användaren kan välja olika val baserat på vad dem vill göra samt återkomma till menyn när de är klara med sitt val.
                 Console.WriteLine("[1] Lägg till ett föremål!");
                 Console.WriteLine("[2] Skriv ut innehållet!");
                 Console.WriteLine("[3] Rensa innehållet!");
@@ -56,40 +56,41 @@ namespace Övning2_Ryggsäcken
                                 continue;
                             }
                             =======================================================================*/
-                       // ======================================NY KOD ==========================
-                      for (int i = lastIndex; i <= backPack.Length - 1; i++)
-                      {
-                          Console.Write("Vad vill du lägga till? ");
-                          backPack[lastIndex] = Console.ReadLine();
-                            lastIndex += 1;
-                            if (lastIndex != 5)
-                            {
-                                Console.Write("Vill du lägga till fler produkter i din ryggsäck?(j/n): ");
-                                string answer = Console.ReadLine().ToLower();
+                        // ======================================NY KOD ==========================
+                        /* for (int i = lastIndex; i <= backPack.Length - 1; i++)
+                         {
+                             Console.Write("Vad vill du lägga till? ");
+                             backPack[lastIndex] = Console.ReadLine();
+                               lastIndex += 1;
+                               if (lastIndex != 5)
+                               {
+                                   Console.Write("Vill du lägga till fler produkter i din ryggsäck?(j/n): ");
+                                   string answer = Console.ReadLine().ToLower();
 
-                                if (answer.Equals("n"))
-                                {
-                                    break;
-                                }
-                            }
-                            else
-                                Console.WriteLine("Din ryggsäck är nu full");
+                                   if (answer.Equals("n"))
+                                   {
+                                       break;
+                                   }
+                               }
+                               else
+                                   Console.WriteLine("Din ryggsäck är nu full");
 
-                        }
+                           }*/
 
-
+                        Case1(backPack, LastIndex(0));
 
                         
                         continue;
                     case 2:
-                        Console.WriteLine("I din ryggsäck har du just nu följande objekt: ");
+                        /*Console.WriteLine("I din ryggsäck har du just nu följande objekt: ");
                             for (int i = 0; i < backPack.Length; i++)
                             {
                                 if (backPack[i] != "")
                             {
                                 Console.WriteLine(i+1 + ": " + backPack[i]);
                             }
-                            }
+                            }*/
+                        Case2(backPack);
 
                         continue;
                     case 3:
@@ -137,6 +138,54 @@ namespace Övning2_Ryggsäcken
         {
             Console.WriteLine("Välkommen till Ryggsäcken! Dagens datum är: " + DateTime.Now.ToShortDateString());
         }
+       
+        
+
+        public static void Case2(string[] y)//För att hämta information från våran ryggsäck.
+        {
+            Console.WriteLine("I din ryggsäck har du just nu följande objekt: ");
+            for (int i = 0; i < y.Length; i++)
+            {
+                if (y[i] != "")
+                {
+                    Console.WriteLine(i + 1 + ": " + y[i]);
+                }
+            }
+        }
+
+        public static void Case1(string[] x, int z) //För att ändra våran ryggsäck.
+        {
+            int lastindex = z;
+            for(int i = lastindex; i<x.Length; i++)
+            {
+                Console.Write("Vad vill du lägga till? ");
+                x[lastindex] = Console.ReadLine();
+                Console.Write("Vill du lägga till fler produkter i din ryggsäck?(j/n): ");
+                string answer = Console.ReadLine().ToLower();
+                lastindex++;
+                LastIndex(lastindex);
+                if (answer.Equals("n"))
+                {
+                    break;
+                }
+                
+            }
+        }
+        public static int LastIndex(int x)
+        {
+            int lastIndex = 0;
+            if (x >= lastIndex)
+            {
+                lastIndex = x;
+                Console.WriteLine(lastIndex);
+            }else if (x <= lastIndex)
+            {
+                x = lastIndex;
+                Console.WriteLine(lastIndex);
+            }
+            return lastIndex;
+        }
+
 
     }
     
