@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+struct s_backpack 
+{
+    string[5] items = {"","","","",""};
+    int last_index = 0;
+};
+   
+
 namespace Övning2_Ryggsäcken
 {
 
